@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'delete_dish'|trans}}{% endblock %}
+
+{% block body %}
+
+<h1>{{'delete_dish'|trans}}</h1>
+<a href="{{path('dishes_index')}}">{{'back'|trans}}</a><br>
+
+<h2>{{'are_you_sure_delete'|trans}} "{{dish.Name}}"?</h2>
+
+<form method="post" action="{{ path('dishes_delete', { id: dish.id }) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete_dish' ~ dish.id) }}">
+    <a href="{{ path('dishes_index') }}" class="btn btn-outline-secondary">{{'cancel'|trans}}</a>
+    <button type="submit" class="btn btn-danger">
+        🗑 {{'delete'|trans}}
+    </button>
+</form>
+{% endblock %}

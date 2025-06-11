@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'menu'|trans}}{% endblock %}
+
+{% block body %}
+<h1>{{'menu'|trans}}</h1>
+{% for section in sections %}
+    <h2>{{section.Name}}</h2>
+    <div class="d-flex flex-column mb-3">
+        {% for dish in section.Dishes %}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <img src="{{asset('images/noimage.svg')}}" alt="No image" class="border border-2 rounded" width="150px">
+                    </div>
+                    <div class="col-sm-10">
+                        <h3 class="card-title"> {{dish.EnUsName}} <span class="badge text-bg-primary">{{dish.Price}} zł</span></h3>
+                        <p class="card-text">{{dish.Category|join(" | ")}}</p>
+                        <p class="card-text">{{ dish.EnUsDescription }}</p>
+                        <button class="btn btn-info">{{'add_to_order'|trans}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}

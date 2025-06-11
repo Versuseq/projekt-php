@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'edit_dish'|trans}}{% endblock %}
+
+{% block body %}
+
+<h1>{{'edit_dish'|trans}}</h1>
+<a href="{{path('dishes_index')}}">{{'back'|trans}}</a><br>
+{#<div class="container-sm">
+{{ form_start(editStudioForm) }}
+
+<div class="form-floating mb-2">
+    {{ form_widget(editStudioForm.Name, {'attr': {'placeholder': 'Name', 'class':'form-control'}}) }}
+    <label for="{{ editStudioForm.Name.vars.id }}">Name</label>
+</div>
+
+<div class="form-floating mb-2">
+    {{ form_widget(editStudioForm.CreatedAt, {'attr': {'placeholder': 'Date of Creation','class':'form-control'}}) }}
+    <label for="{{ editStudioForm.CreatedAt.vars.id }}">Date of Creation</label>
+</div>
+<div class="form-floating mb-2">
+    {{ form_widget(editStudioForm.Description, {'attr': {'placeholder': 'Description','class':'form-control','style':'height:50px;'}}) }}
+    <label for="{{ editStudioForm.Description.vars.id }}">Description</label>
+</div>
+{{form_widget(editStudioForm.Submit, {'attr':{'class':'btn btn-primary'}})}}
+{{ form_end(editStudioForm) }}
+</div>#}
+{{form_start(form)}}
+<button type="submit">{{'save_changes'|trans}}</button>
+{{form_end(form)}}
+{% endblock %}

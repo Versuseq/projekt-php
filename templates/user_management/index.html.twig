@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'manage_users'|trans}}{% endblock %}
+
+{% block body %}
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>{{'email'|trans}}</th>
+        <th>{{'roles'|trans}}</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{user.Id}}</td>
+        <td>{{user.Email}}</td>
+        <td>
+        {%if "ROLE_ADMIN" in user.Roles|join(',')%}
+        <a href="{{path('user_management_deleterole', {id: user.Id, role: "admin"})}}">
+            ✅ Admin
+        </a>
+        {% else %}
+        <a href="{{path('user_management_addrole', {id: user.Id, role: "admin"})}}">
+            ❌ Admin
+        </a>
+        {% endif %}
+        <br>
+        {%if "ROLE_USER" in user.Roles|join(',')%}
+        <a href="{{path('user_management_deleterole', {id: user.Id, role:"user"})}}">
+            ✅ User
+        </a>
+        {% else %}
+        <a href="{{path('user_management_addrole', {id: user.Id, role:"user"})}}">
+            ❌ User
+        </a>
+        {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
